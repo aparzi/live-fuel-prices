@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import CitySearch from "./components/city-search/city-search";
+import Map from "./components/map-viewer/map";
+import {IDropdown} from "./models/interfaces/IDropdown";
+import {IGeographicInfo} from "./models/interfaces/IGeographicInfo";
 
 function App() {
+  const [selectedCity, setSelectedCity] = useState<IDropdown<IGeographicInfo>>();
+  const onCityChange = (e: { value: IDropdown<IGeographicInfo>}) => {
+    console.log('city selected => ', e.value);
+    setSelectedCity(e.value);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CitySearch selectedCity={selectedCity} onCityChange={onCityChange}/>
+      <div style={{ paddingBottom: '5rem' }}></div>
+      <Map lat={selectedCity?.code?.lat} lng={selectedCity?.code?.lng}/>
     </div>
   );
 }
