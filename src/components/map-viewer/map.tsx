@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
     MapContainer,
     TileLayer,
     Marker,
-    Popup
+    Popup, useMap
 } from 'react-leaflet';
 import {LatLng} from "leaflet";
 import './map.css';
@@ -18,6 +18,13 @@ L.Icon.Default.mergeOptions({
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
+const RecenterAutomatically = ({lat, lng}: {lat: number, lng: number}) => {
+    const map = useMap();
+    useEffect(() => {
+        map.setView([lat, lng]);
+    }, [lat, lng]);
+    return null;
+}
 
 function Map(geographicInfo: IGeographicInfo) {
     const position = new LatLng(geographicInfo?.lat ?? 41.903853714205006, geographicInfo?.lng ?? 12.484492585565903);
@@ -33,6 +40,7 @@ function Map(geographicInfo: IGeographicInfo) {
                     A pretty CSS3 popup. <br /> Easily customizable.
                 </Popup>
             </Marker>
+            <RecenterAutomatically lat={position?.lat} lng={position?.lng} />
         </MapContainer>
     )
 }
