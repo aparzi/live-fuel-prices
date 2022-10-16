@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-const useAxiosPost = (url: string, payload: any) => {
+export function useAxiosPost(url: string, payload: any) {
     const [data, setData] = useState(null);
     const [error, setError] = useState("");
     const [loaded, setLoaded] = useState(false);
@@ -15,4 +15,4 @@ const useAxiosPost = (url: string, payload: any) => {
     }, []);
 
     return { data, error, loaded };
-};
+}
