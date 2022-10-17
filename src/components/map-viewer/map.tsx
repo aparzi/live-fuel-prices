@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
     MapContainer,
     TileLayer,
@@ -20,9 +20,7 @@ L.Icon.Default.mergeOptions({
 
 const RecenterAutomatically = ({lat, lng}: {lat: number, lng: number}) => {
     const map = useMap();
-    useEffect(() => {
-        map.setView([lat, lng]);
-    }, [lat, lng]);
+    map.setView([lat, lng]);
     return null;
 }
 
