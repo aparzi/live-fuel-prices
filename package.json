@@ -14,6 +14,7 @@
     "axios": "^1.1.2",
     "bootstrap": "^5.2.2",
     "chart.js": "^3.9.1",
+    "env-cmd": "^10.1.0",
     "leaflet": "^1.9.2",
     "primeicons": "^6.0.1",
     "primereact": "^8.6.1",
@@ -34,7 +35,9 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "lint": "eslint src/**/*.ts src/**/*.tsx"
+    "lint": "eslint src/**/*.ts src/**/*.tsx",
+    "start:dev": "env-cmd -f .env.dev npm start",
+    "build:prod": "env-cmd -f .env.prod npm run build"
   },
   "eslintConfig": {
     "extends": [

@@ -21,7 +21,8 @@ function App() {
     const getInfoFuelBySelectedCity = async () => {
         try {
             console.log('get info fuel by selected city...');
-            const response = await axios.post('http://localhost:5000/search/zone', {
+            console.log(process.env.REACT_APP_API_URL)
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}search/zone`, {
                 "points": [
                     {
                         "lat": selectedCity?.code?.lat,

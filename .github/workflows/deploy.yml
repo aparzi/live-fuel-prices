@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-test-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: "14.15.1"
       - run: npm install
-      - run: npm run build
+      - run: npm run-script build:prod
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v1
         with:
