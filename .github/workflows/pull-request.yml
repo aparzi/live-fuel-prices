@@ -1,15 +1,12 @@
-name: Release APP
+name: Pull Request Check
 
-# Trigger the workflow on push but only for the master branch
 on:
-  push:
+  pull_request:
     branches:
       - main
-    types: [closed]
 
 jobs:
   build-test-deploy:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,12 +16,6 @@ jobs:
         with:
           node-version: "14.15.1"
       - run: npm install
-      - run: npm run build
-#      - run: npm test
-      - name: Deploy
-        uses: crazy-max/ghaction-github-pages@v1
-        with:
-          target_branch: gh-pages
-          build_dir: build
+      - run: npm run-script lint
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
