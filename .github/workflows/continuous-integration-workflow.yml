@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Release APP
 
 # Trigger the workflow on push but only for the master branch
 on:
@@ -15,7 +15,7 @@ jobs:
       - name: Set-up Node
         uses: actions/setup-node@v1
         with:
-          node-version: "10.x"
+          node-version: "14.15.1"
       - run: npm install
       - run: npm run build
       - run: npm test
