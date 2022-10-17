@@ -9,9 +9,9 @@ const FuelPricesViewer = ({records}: {records: Array<IResult>}) => {
 
     const imageBodyTemplate = (rowData: IFuel) => {
         if (rowData?.isSelf) {
-            return <img width={25} height={25} src={process.env.PUBLIC_URL + '/images/red-circle.png'} alt="image-red.png" />;
+            return <img width={25} height={25} src={process.env.PUBLIC_URL + '/images/red-circle.png'} alt="red.png" />;
         } else {
-            return <img width={25} height={25} src={process.env.PUBLIC_URL + '/images/green-circle.png'} alt="image-green.png" />;
+            return <img width={25} height={25} src={process.env.PUBLIC_URL + '/images/green-circle.png'} alt="green.png" />;
         }
     }
 
