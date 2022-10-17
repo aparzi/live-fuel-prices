@@ -8,3 +8,9 @@
 .text-muted {
     color: #5a768a!important;
 }
+
+.max-width-column {
+    word-wrap: break-word;
+    max-width: 18rem;
+    width: 18rem;
+}

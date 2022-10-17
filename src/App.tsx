@@ -21,11 +21,11 @@ function App() {
     const getInfoFuelBySelectedCity = async () => {
         try {
             console.log('get info fuel by selected city...');
-            const response = await axios.post('http://localhost:3100/search/zone', {
+            const response = await axios.post('http://localhost:5000/search/zone', {
                 "points": [
                     {
-                        "lat": 41.5602544,
-                        "lng": 14.6627161
+                        "lat": selectedCity?.code?.lat,
+                        "lng": selectedCity?.code?.lng
                     }
                 ]
             });

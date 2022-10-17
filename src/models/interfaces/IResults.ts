@@ -1,6 +1,6 @@
 import {IGeographicInfo} from "./IGeographicInfo";
 
-interface IFuel {
+export interface IFuel {
     id: number;
     price: number;
     name: string;
