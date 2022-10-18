@@ -1,4 +1,4 @@
 export interface IGeographicInfo {
-    lat: number | undefined;
-    lng: number | undefined;
+    lat: number;
+    lng: number;
 }
