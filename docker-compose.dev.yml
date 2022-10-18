@@ -1,0 +1,14 @@
+version: '3'
+services:
+
+  service-1:
+    container_name: live-fuel-prices
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+      - REACT_APP_API_URL=http://localhost:5000/
+    restart: always
+    command: npm run-script start:dev

@@ -20,8 +20,6 @@ function App() {
 
     const getInfoFuelBySelectedCity = async () => {
         try {
-            console.log('get info fuel by selected city...');
-            console.log(process.env.REACT_APP_API_URL)
             const response = await axios.post(`${process.env.REACT_APP_API_URL}search/zone`, {
                 "points": [
                     {
@@ -30,7 +28,7 @@ function App() {
                     }
                 ]
             });
-            console.log('response => ', response);
+            console.log(response.data.results);
             setRecords(response.data.results);
         } catch (error) {
             console.error('Error get info fuel => ', error);
@@ -42,7 +40,7 @@ function App() {
         <div className="App">
             <CitySearch selectedCity={selectedCity} onCityChange={onCityChange} getInfoFuelBySelectedCity={getInfoFuelBySelectedCity}/>
             <div style={{paddingBottom: '5rem'}}></div>
-            <Map lat={selectedCity?.code?.lat} lng={selectedCity?.code?.lng}/>
+            <Map geographicInfo={selectedCity?.code} records={records}/>
             <div style={{paddingBottom: '3rem'}}></div>
             <FuelPricesViewer records={records}/>
         </div>

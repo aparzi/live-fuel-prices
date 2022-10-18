@@ -9,6 +9,8 @@ import {LatLng} from "leaflet";
 import './map.css';
 import L from 'leaflet';
 import {IGeographicInfo} from "../../models/interfaces/IGeographicInfo";
+import {IResult} from "../../models/interfaces/IResults";
+import { For } from 'react-loops';
 
 // delete L.Icon.Default.prototype._getIconUrl;
 
@@ -24,7 +26,7 @@ const RecenterAutomatically = ({lat, lng}: {lat: number, lng: number}) => {
     return null;
 }
 
-function Map(geographicInfo: IGeographicInfo) {
+function Map({geographicInfo, records}: {geographicInfo: IGeographicInfo | undefined, records: Array<IResult>}) {
     const position = new LatLng(geographicInfo?.lat ?? 41.903853714205006, geographicInfo?.lng ?? 12.484492585565903);
 
     return (
@@ -33,11 +35,14 @@ function Map(geographicInfo: IGeographicInfo) {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={position}>
-                <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-            </Marker>
+
+            <For of={records} as={(item: IResult) =>
+                <Marker position={new LatLng(item?.location?.lat, item?.location?.lng)}>
+                    <Popup>
+                        {item?.address}
+                    </Popup>
+                </Marker>
+            }/>
             <RecenterAutomatically lat={position?.lat} lng={position?.lng} />
         </MapContainer>
     )
