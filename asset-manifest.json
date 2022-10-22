@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/live-fuel-prices/static/css/main.13cf7624.css",
+    "main.js": "/live-fuel-prices/static/js/main.99f822cd.js",
+    "static/js/125.9251038e.chunk.js": "/live-fuel-prices/static/js/125.9251038e.chunk.js",
+    "static/js/921.0604874e.chunk.js": "/live-fuel-prices/static/js/921.0604874e.chunk.js",
+    "static/js/787.32b97a35.chunk.js": "/live-fuel-prices/static/js/787.32b97a35.chunk.js",
+    "index.html": "/live-fuel-prices/index.html",
+    "main.13cf7624.css.map": "/live-fuel-prices/static/css/main.13cf7624.css.map",
+    "main.99f822cd.js.map": "/live-fuel-prices/static/js/main.99f822cd.js.map",
+    "125.9251038e.chunk.js.map": "/live-fuel-prices/static/js/125.9251038e.chunk.js.map",
+    "921.0604874e.chunk.js.map": "/live-fuel-prices/static/js/921.0604874e.chunk.js.map",
+    "787.32b97a35.chunk.js.map": "/live-fuel-prices/static/js/787.32b97a35.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.13cf7624.css",
+    "static/js/main.99f822cd.js"
+  ]
+}
