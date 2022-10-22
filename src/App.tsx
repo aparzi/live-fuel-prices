@@ -10,25 +10,23 @@ import {IResult} from "./models/interfaces/IResults";
 
 function App() {
 
-    const [selectedCity, setSelectedCity] = useState<IDropdown<IGeographicInfo>>();
+    const [selectedCountry, setSelectedCountry] = useState<IDropdown<IGeographicInfo>>();
     const [records, setRecords] = useState<Array<IResult>>([]);
 
     const onCityChange = (e: { value: IDropdown<IGeographicInfo> }) => {
-        console.log('city selected => ', e.value);
-        setSelectedCity(e.value);
+        setSelectedCountry(e.value);
     }
 
     const getInfoFuelBySelectedCity = async () => {
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}search/zone`, {
-                "points": [
+                points: [
                     {
-                        "lat": selectedCity?.code?.lat,
-                        "lng": selectedCity?.code?.lng
+                        "lat": selectedCountry?.code?.lat,
+                        "lng": selectedCountry?.code?.lng
                     }
                 ]
             });
-            console.log(response.data.results);
             setRecords(response.data.results);
         } catch (error) {
             console.error('Error get info fuel => ', error);
@@ -36,11 +34,12 @@ function App() {
         }
     }
 
+    // @ts-ignore
     return (
         <div className="App">
-            <CitySearch selectedCity={selectedCity} onCityChange={onCityChange} getInfoFuelBySelectedCity={getInfoFuelBySelectedCity}/>
+            <CitySearch selectedCountry={selectedCountry} onCityChange={onCityChange} getInfoFuelBySelectedCity={getInfoFuelBySelectedCity}/>
             <div style={{paddingBottom: '5rem'}}></div>
-            <Map geographicInfo={selectedCity?.code} records={records}/>
+            <Map geographicInfo={selectedCountry?.code} records={records}/>
             <div style={{paddingBottom: '3rem'}}></div>
             <FuelPricesViewer records={records}/>
         </div>
